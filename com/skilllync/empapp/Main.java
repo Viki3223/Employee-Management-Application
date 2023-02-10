@@ -27,6 +27,11 @@ public class Main {
                 double salary = sc.nextDouble();
                 System.out.println("Enter age : ");
                 int age = sc.nextInt();
+                emp.setId(id);
+                emp.setName(name);
+                emp.setSalary(salary);
+                emp.setAge(age);
+                dao.createEmployee(emp);
                 
                 emp.setId(id);
                 emp.setName(name);
@@ -37,6 +42,7 @@ public class Main {
                     break;
                 case 2:
                     System.out.println("Thanku for using our Application !!!");
+                    System.exit(0);
                 default:
                     System.out.println("Enter valid choise ");
                     break;

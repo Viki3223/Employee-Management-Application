@@ -1,14 +1,35 @@
 package com.skilllync.empapp;
 
-import com.mysql.jdbc.Connection;
+import java.sql.Connection;
+
+import java.sql.PreparedStatement;
 
 public class EmployeeDaoImpl implements EmployeeDaoIntrf{
-    java.sql.Connection con;
+    Connection con;
     @Override
     public void createEmployee(Employee emp) {
         // TODO Auto-generated method stub
         con = DBconnection.createDBConnection();
         String query = "insert into employee values(?,?,?,?)";
+        try{
+            PreparedStatement pstmt = con.prepareStatement(query);
+            pstmt.setInt(1,emp.getId());
+            pstmt.setString(2,emp.getName());
+            pstmt.setDouble(3, emp.getSalary());
+            pstmt.setInt(4, emp.getAge());
+
+            int x = pstmt.executeUpdate();
+            if(x>0){
+                System.out.println("Employee Inserted Successfully !!!");
+            }
+            else{
+                System.out.println("Not Inserted successfully ");
+            }
+
+        }
+        catch(Exception ex){
+            ex.printStackTrace();
+        }
         
     }
 

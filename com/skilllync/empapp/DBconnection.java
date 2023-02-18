@@ -11,12 +11,12 @@ public class DBconnection {
             // first load the driver 
             Class.forName("com.mysql.jdbc.Driver");
             // next get the connection
-            String url = "jdbc:mysql://localhost:3306/employeeDB";
+            String url = "jdbc:mysql://localhost:3306/employeeDB?useSSL=false";
             String user = "root";
             String pwd = "root";
             con = DriverManager.getConnection(url,user,pwd);
         } catch (Exception e) {
-            // TODO Auto-generated catch block
+     
             e.printStackTrace();
         }
         return con;

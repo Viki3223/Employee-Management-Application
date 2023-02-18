@@ -1,8 +1,10 @@
 package com.skilllync.empapp;
 
+import java.sql.Statement;
 import java.sql.Connection;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 public class EmployeeDaoImpl implements EmployeeDaoIntrf{
     Connection con;
@@ -35,13 +37,46 @@ public class EmployeeDaoImpl implements EmployeeDaoIntrf{
 
     @Override
     public void showAllEmployee() {
-        // TODO Auto-generated method stub
+        con = DBconnection.createDBConnection();
+        String query = "Seletct * from employee";
+        System.out.println("Employee Details :");
+        System.out.format("%s\t%s\t%s\t%s\n","ID","Name","Salary","age");
+        System.out.println("--------------------");
+        
+        try {
+            Statement stmt = con.createStatement();
+            ResultSet result = stmt.executeQuery(query);
+            while(result.next()){
+                System.out.format("%d \n%s \n%f \n%d \n",result.getInt(1),
+                                            result.getString(2),
+                                            result.getDouble(3),
+                                            result.getInt(4));
+                                            System.out.println("-------------------");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         
     }
 
     @Override
-    public void showEmployeeBasedOnId() {
+    public void showEmployeeBasedOnId(int id) {
         // TODO Auto-generated method stub
+        con = DBconnection.createDBConnection();
+        String querry = "Select * from employee where id = "+id;
+        try {
+            Statement stmt = con.createStatement();
+            ResultSet result = stmt.executeQuery(querry);
+            while(result.next()){
+                System.out.format("%d \n%s \n%f \n%d \n",result.getInt(1),
+                                            result.getString(2),
+                                            result.getDouble(3),
+                                            result.getInt(4));
+                                            System.out.println("-------------------");
+            }
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
         
     }
 

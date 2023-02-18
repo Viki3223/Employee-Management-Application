@@ -13,7 +13,8 @@ public class Main {
                     "2. Show All Employee\n" +
                     "3. show Employee based on id\n" +
                     "4. Update the employee\n" +
-                    "5. Delete the employee\n");
+                    "5. Delete the employee\n" +
+                    "6. Exit");
             System.out.print("Enter choise: ");
             int ch = sc.nextInt();
             switch (ch) {
@@ -40,7 +41,16 @@ public class Main {
                 
                     dao.createEmployee(emp);
                     break;
+
                 case 2:
+                    dao.showAllEmployee();
+                    break;
+
+                case 3: 
+                System.out.println("Enter the employe id to show details");
+                int empid = sc.nextInt();
+                dao.showEmployeeBasedOnId(empid);
+                case 6:
                     System.out.println("Thanku for using our Application !!!");
                     System.exit(0);
                 default:

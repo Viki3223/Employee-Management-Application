@@ -7,5 +7,6 @@ public interface EmployeeDaoIntrf {
     public void showEmployeeBasedOnId(int id);
     public void updateEmployee(int id, String name);
     public void deleteEmployee(int id);
+    public void deleteAllEmployee();
 }
 
